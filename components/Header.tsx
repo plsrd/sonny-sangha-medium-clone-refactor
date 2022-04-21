@@ -1,34 +1,25 @@
-import Link from 'next/link'
 import React from 'react'
 
-function Header() {
+export default function Header() {
   return (
-    <header className="mx-auto flex max-w-7xl justify-between p-5">
-      <div className="flex items-center space-x-5">
-        <Link href="/">
-          <img
-            className="w-44 cursor-pointer object-contain"
-            src="https://links.papareact.com/yvf"
-            alt="medium logo"
-          ></img>
-        </Link>
-        <div className="hidden items-center space-x-5 md:inline-flex">
-          <h3>About</h3>
-          <h3>Contact</h3>
-          <h3 className="rounded-full bg-green-600 px-4 py-1 text-white">
-            Follow
-          </h3>
-        </div>
+    <div className="flex items-center justify-between border-y  border-black bg-yellow-400 py-10 lg:py-0">
+      <div className="space-y-5 px-10">
+        <h1 className="max-w-xl font-serif text-6xl">
+          <span className="underline decoration-black decoration-4">
+            Medium
+          </span>{' '}
+          is a place to write, read, and connect
+        </h1>
+        <h2>
+          It's easy and free to post your thinking on any topic and connect with
+          millions of readers
+        </h2>
       </div>
-
-      <div className="flex items-center space-x-5 text-green-600">
-        <h3>Sign In</h3>
-        <h3 className="rounded-full border border-green-600 px-4 py-1">
-          Get Started
-        </h3>
-      </div>
-    </header>
+      <img
+        className="hidden h-32 md:inline-flex lg:h-full"
+        src="https://accountabilitylab.org/wp-content/uploads/2020/03/Medium-logo.png"
+        alt="Medium M logo"
+      />
+    </div>
   )
 }
-
-export default Header

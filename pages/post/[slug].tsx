@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { sanityClient, urlFor } from '../../lib/sanity'
-import Header from '../../components/Header'
+
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Post as PostType } from '../../lib/typings'
 import PortableText from 'react-portable-text'
@@ -42,7 +42,6 @@ export default function Post({ post }: Props) {
 
   return (
     <main>
-      <Header />
       <img
         className="h-40 w-full object-cover"
         src={urlFor(post.mainImage).url()}
