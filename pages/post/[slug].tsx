@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { sanityClient, urlFor } from '../../lib/sanity'
-
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Post as PostType } from '../../lib/typings'
-import PortableText from 'react-portable-text'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import Layout from '../../components/Layout'
+import { SanityPortableText } from '../../lib/sanity'
 
 interface IFormInput {
   _id: string
@@ -41,14 +41,14 @@ export default function Post({ post }: Props) {
   }
 
   return (
-    <main>
+    <Layout>
       <img
-        className="h-40 w-full object-cover"
+        className="h-60 w-full object-cover"
         src={urlFor(post.mainImage).url()}
         alt="main image"
       />
       <article className="mx-auto max-w-3xl p-5">
-        <h1 className="mt-10 mb-3 text-3xl">{post.title}</h1>
+        <h1 className="mt-5 mb-3 text-3xl">{post.title}</h1>
         <h2 className="text-grey-500 mb-2 text-xl font-light">
           {post.description}
         </h2>
@@ -65,27 +65,7 @@ export default function Post({ post }: Props) {
           </p>
         </div>
         <div className="mt-10">
-          <PortableText
-            dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
-            projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
-            content={post.body}
-            serializers={{
-              h1: (props: any) => (
-                <h1 className="my-5 text-2xl font-bold" {...props} />
-              ),
-              h2: (props: any) => (
-                <h2 className="my-5 text-xl font-bold" {...props} />
-              ),
-              li: ({ children }: any) => (
-                <li className="ml-4 list-disc">{children}</li>
-              ),
-              link: ({ href, children }: any) => (
-                <a href={href} className="hover-underline text-blue-500">
-                  {children}
-                </a>
-              ),
-            }}
-          />
+          <SanityPortableText content={post.body} />
         </div>
       </article>
       <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
@@ -171,7 +151,7 @@ export default function Post({ post }: Props) {
           </div>
         ))}
       </div>
-    </main>
+    </Layout>
   )
 }
 
