@@ -1,11 +1,15 @@
 import React from 'react'
 import { sanityClient } from '../lib/sanity'
-import { PostProps } from '../lib/typings'
+import { Post } from '../lib/typings'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import PostGrid from '../components/PostGrid'
 
-export default function Home({ posts }: PostProps) {
+interface Props {
+  posts: [Post]
+}
+
+export default function Home({ posts }: Props) {
   return (
     <Layout>
       <Header />
