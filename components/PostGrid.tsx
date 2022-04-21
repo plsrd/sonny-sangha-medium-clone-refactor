@@ -11,7 +11,7 @@ export default function PostGrid({ posts }: Props) {
   return (
     <div className="grid grid-cols-1 gap-3 p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3">
       {posts.map((post) => (
-        <Link key={post._id} href={`/post/${post.slug.current}`}>
+        <Link key={post._id} href={`/post/${post.slug}`}>
           <div className="group cursor-pointer overflow-hidden rounded-lg border hover:shadow-lg">
             {post.mainImage && (
               <img

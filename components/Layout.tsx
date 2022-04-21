@@ -10,11 +10,11 @@ export default function Layout({ children }: Props) {
   return (
     <div className="mx-auto max-w-7xl">
       <Head>
-        <title>Medium Blog</title>
+        <title>Medium</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
-      <body>{children}</body>
+      {children}
     </div>
   )
 }

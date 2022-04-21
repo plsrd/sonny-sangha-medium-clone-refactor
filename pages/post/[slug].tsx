@@ -69,15 +69,13 @@ export default function Post({ post }: Props) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const query = `*[_type == "post"]{
     _id,
-    slug {
-      current
-    }
+    'slug': slug.current
   }`
 
   const posts = await sanityClient.fetch(query)
 
   const paths = posts.map((post: PostType) => ({
-    params: { slug: post.slug.current },
+    params: { slug: post.slug },
   }))
 
   return {
@@ -92,14 +90,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     _createdAt,
     title,
     body,
-    slug,
+    'slug': slug.current,
     author->{
       name,
       image
     },
     description,
     mainImage,
-    'comments': *[ _type == 'comment' && post._ref == ^._id && approved == true]
+    'comments': *[ _type == 'comment' && references(^._id) && approved]
   }`
 
   const post = await sanityClient.fetch(query, { slug: params?.slug })

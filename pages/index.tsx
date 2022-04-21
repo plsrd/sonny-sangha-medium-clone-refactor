@@ -22,7 +22,7 @@ export const getServerSideProps = async () => {
   const query = `*[_type == "post"]{
     _id,
     title,
-    slug,
+    'slug': slug.current,
     author->{
       name,
       image
